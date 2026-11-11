@@ -22,16 +22,19 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const emailLink = document.querySelector('#email-link');
 const whatsappLink = document.querySelector('#whatsapp-link');
 const contactNote = document.querySelector('#contact-note');
-const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email) && !CONTACT.email.includes('wesleywin94@gmail.com');
+const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email) && const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email);;
 const validWhatsapp = /^\d{12,13}$/.test(CONTACT.whatsapp);
 if (validEmail) {
   emailLink.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent('Contato pelo portfólio')}`;
 } else {
   emailLink.hidden = true;
 }
-if (validWhatsapp) {
+if (whatsappLink) {
+  const numero = CONTACT.whatsapp.replace(/\D/g, '');
+
+  whatsappLink.href = `https://wa.me/${numero}?text=${encodeURIComponent('Olá! Vi seu portfólio WesCode e gostaria de conhecer seus sistemas.')}`;
+
   whatsappLink.hidden = false;
-  whatsappLink.href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent('Olá! Vi seu portfólio e gostaria de conversar sobre um sistema.')}`;
   whatsappLink.target = '_blank';
   whatsappLink.rel = 'noopener noreferrer';
 }
