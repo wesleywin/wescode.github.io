@@ -2,7 +2,7 @@
 // Não use dados pessoais de terceiros sem autorização.
 const CONTACT = {
   email: 'wesleywin94@gmail.com',
-  whatsapp: '13988230109' 
+  whatsapp: '5513988230109' 
 };
 
 const toggle = document.querySelector('.menu-toggle');
