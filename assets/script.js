@@ -2,7 +2,7 @@
 // Não use dados pessoais de terceiros sem autorização.
 const CONTACT = {
   email: 'wesleywin94@gmail.com',
-  whatsapp: '5513988230109' 
+  whatsapp: '5513988230109' // Exemplo: '5513999999999' (somente números, com DDI 55)
 };
 
 const toggle = document.querySelector('.menu-toggle');
@@ -22,19 +22,16 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const emailLink = document.querySelector('#email-link');
 const whatsappLink = document.querySelector('#whatsapp-link');
 const contactNote = document.querySelector('#contact-note');
-const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email) && const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email);;
+const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT.email) && !CONTACT.email.includes('EXEMPLO.COM');
 const validWhatsapp = /^\d{12,13}$/.test(CONTACT.whatsapp);
 if (validEmail) {
   emailLink.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent('Contato pelo portfólio')}`;
 } else {
   emailLink.hidden = true;
 }
-if (whatsappLink) {
-  const numero = CONTACT.whatsapp.replace(/\D/g, '');
-
-  whatsappLink.href = `https://wa.me/${numero}?text=${encodeURIComponent('Olá! Vi seu portfólio WesCode e gostaria de conhecer seus sistemas.')}`;
-
+if (validWhatsapp) {
   whatsappLink.hidden = false;
+  whatsappLink.href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent('Olá! Vi seu portfólio e gostaria de conversar sobre um sistema.')}`;
   whatsappLink.target = '_blank';
   whatsappLink.rel = 'noopener noreferrer';
 }
